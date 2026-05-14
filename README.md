@@ -17,6 +17,7 @@ Released under the [MIT License](LICENSE).
 | PyPDF2 | `pip install pypdf2` |
 | tqdm | `pip install tqdm` |
 | moviepy | `pip install moviepy` |
+| wand | `pip install wand` |
 
 ---
 
@@ -88,6 +89,13 @@ Normalize color tone across JPEG images in the current directory using Reinhard 
 ```
 ./normalize_tone.py [--preset neutral|warm|cool] [--ref reference.jpg] [--strength 0..1] [--outdir normalized]
 ```
+
+### `shepards_distort.py`
+Apply randomized [Shepard's warp](https://imagemagick.org/Usage/distorts/#shepards) distortion to an image — a liquify-style warp from the command line.
+```
+./shepards_distort.py input.png output.png [--points 10] [--magnitude 2] [--angle 45] [--power 4.0]
+```
+Requires: `pip install wand`
 
 ### `tile_images.py`
 Tile images in a brick pattern across a large canvas, optionally rotate the whole canvas, then center-crop to the target size.
