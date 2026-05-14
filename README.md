@@ -41,6 +41,13 @@ Detect the true MIME type of every file in the current directory and rename any 
 ./fix_extensions.sh
 ```
 
+### `pad_binary.py`
+Zero-pad a binary file to the next power of two, or a specific size. Useful when emulators or loaders require exact ROM sizes.
+```
+./pad_binary.py input.bin [-i] [--size 256K]
+```
+Without `--size`, pads to the next power of two. `-i` overwrites in place; otherwise writes `input_262144.bin`.
+
 ### `pad.sh`
 Pad purely numeric filenames to four digits (e.g., `7.jpg` → `0007.jpg`).
 ```
