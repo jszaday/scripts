@@ -16,6 +16,7 @@ Released under the [MIT License](LICENSE).
 | OpenCV | `pip install opencv-python` |
 | PyPDF2 | `pip install pypdf2` |
 | tqdm | `pip install tqdm` |
+| moviepy | `pip install moviepy` |
 
 ---
 
@@ -103,6 +104,13 @@ Generate favicon PNGs at standard sizes (16, 32, 48, 167, 180, 192 px) from a so
 ---
 
 ## Video processing
+
+### `sync_loops.py`
+Combine a looping audio file and a looping video file into a single output. Repeats each clip to reach a minimum length and adds optional audio fade in/out.
+```
+./sync_loops.py audio.mp3 video.mp4 output.mp4 [--min-length 30] [--fadeout 0.7] [--fadein 0.0]
+```
+Requires: `pip install moviepy`
 
 ### `concat_mp4.sh`
 Concatenate all `.mp4` files in the current directory in lexicographic order.
