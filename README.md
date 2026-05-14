@@ -91,11 +91,10 @@ Normalize color tone across JPEG images in the current directory using Reinhard 
 ```
 
 ### `shepards_distort.py`
-Apply randomized [Shepard's warp](https://imagemagick.org/Usage/distorts/#shepards) distortion to an image — a liquify-style warp from the command line.
+Apply randomized Shepard's warp distortion to an image — a liquify-style warp from the command line.
 ```
 ./shepards_distort.py input.png output.png [--points 10] [--magnitude 2] [--angle 45] [--power 4.0]
 ```
-Requires: `pip install wand`
 
 ### `tile_images.py`
 Tile images in a brick pattern across a large canvas, optionally rotate the whole canvas, then center-crop to the target size.
@@ -118,7 +117,6 @@ Combine a looping audio file and a looping video file into a single output. Repe
 ```
 ./sync_loops.py audio.mp3 video.mp4 output.mp4 [--min-length 30] [--fadeout 0.7] [--fadein 0.0]
 ```
-Requires: `pip install moviepy`
 
 ### `concat_mp4.sh`
 Concatenate all `.mp4` files in the current directory in lexicographic order.
