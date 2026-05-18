@@ -11,10 +11,12 @@ Released under the [MIT License](LICENSE).
 | [ffmpeg](https://ffmpeg.org) | `brew install ffmpeg` |
 | [ImageMagick](https://imagemagick.org) | `brew install imagemagick` |
 | [exiftool](https://exiftool.org) | `brew install exiftool` |
+| [mupdf](https://mupdf.com) | `brew install mupdf` |
 | Python 3 | `brew install python` |
 | Pillow | `pip install pillow` |
 | OpenCV | `pip install opencv-python` |
 | PyPDF2 | `pip install pypdf2` |
+| reportlab | `pip install reportlab` |
 | tqdm | `pip install tqdm` |
 | moviepy | `pip install moviepy` |
 | wand | `pip install wand` |
@@ -140,6 +142,24 @@ Concatenate all `.mp4` files in the current directory in lexicographic order.
 Concatenate multiple PDFs into a single output file.
 ```
 ./merge_pdfs.py output.pdf input1.pdf input2.pdf [...]
+```
+
+### `pdf_photo_book.py`
+Extract images from a PDF, resample to a target DPI, optionally bake the ICC
+profile to Display P3 (standard gamma), and lay each image out centered on its
+own page with the original caption. Intermediate files are written to a temp
+directory and cleaned up automatically.
+```
+./pdf_photo_book.py input.pdf output.pdf [options]
+
+  --dpi INT           Target DPI (default: 300)
+  --page-size PRESET  letter | a4 | a3 (default: letter)
+  --margin FLOAT      Page margin in inches (default: 0.65)
+  --font NAME         Caption font name (default: Helvetica)
+  --font-size INT     Caption font size in points (default: 10)
+  --no-icc-bake       Keep original ICC profile instead of converting to
+                      Display P3 standard gamma
+  --icc PATH          Path to target ICC profile (default: system Display P3)
 ```
 
 ---
