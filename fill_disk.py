@@ -6,6 +6,7 @@ import argparse
 import errno
 import os
 import sys
+import time
 from pathlib import Path
 
 
@@ -48,6 +49,7 @@ def main():
 
     written = 0
     tick = 0
+    t0 = time.monotonic()
     try:
         with open(out, "wb") as f:
             while tick < args.ticks:
@@ -76,9 +78,13 @@ def main():
                 print(f"  [{pct:5.1f}%] tick {tick:3d}/{args.ticks}  "
                       f"+{to_write // 1024}KB  free {free_mb:.1f}MB", end="\r")
 
-        print(f"\nWrote {written / 1024**2:.1f} MB to {out}.")
+        elapsed = time.monotonic() - t0
+        tps = tick / elapsed if elapsed > 0 else 0
+        print(f"\nWrote {written / 1024**2:.1f} MB to {out} in {elapsed:.1f}s ({tps:.1f} ticks/s).")
     except KeyboardInterrupt:
-        print(f"\nInterrupted after {written / 1024**2:.1f} MB.")
+        elapsed = time.monotonic() - t0
+        tps = tick / elapsed if elapsed > 0 else 0
+        print(f"\nInterrupted after {written / 1024**2:.1f} MB in {elapsed:.1f}s ({tps:.1f} ticks/s).")
 
     if args.keep:
         print(f"Keeping {out} (--keep).")
