@@ -41,12 +41,22 @@ def main():
     else:
         files = sorted(files)
 
+    # Validate pattern early
+    try:
+        _ = args.pattern % 1
+    except Exception as e:
+        print(f"Error: Invalid pattern '{args.pattern}'.")
+        print(f"Make sure to include a type character like 'd' (e.g., 'img_%04d.png').")
+        print(f"Details: {e}")
+        sys.exit(1)
+
     renames = []
     target_names = set()
     for i, fname in enumerate(files, start=args.start):
         try:
             new_name = args.pattern % i
         except Exception as e:
+            # This should generally be caught by the early validation, but keeping for safety.
             print(f"Error formatting pattern '{args.pattern}' with index {i}: {e}")
             sys.exit(1)
 
